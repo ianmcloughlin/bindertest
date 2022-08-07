@@ -1,0 +1,11 @@
+{
+  "Notebook": {
+    "Toolbar": false,
+    "Header": false
+  },
+  "Cell": {
+    "cm_config": {
+      "lineNumbers": true
+    }
+  }
+}

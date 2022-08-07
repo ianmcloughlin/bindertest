@@ -16,8 +16,6 @@ RUN chown -R ${NB_UID} ${HOME}
 RUN apt update && apt install -y --no-install-recommends git nodejs
 
 USER ${USER}
-COPY . ${HOME}
 WORKDIR ${HOME}
-RUN git clone https://github.com/jupyter/notebook
-RUN pip install -e ./notebook/
+COPY . ${HOME}
 RUN pip install -r requirements.txt
