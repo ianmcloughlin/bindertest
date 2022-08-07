@@ -9,16 +9,17 @@ ENV USER ${NB_USER}
 ENV HOME /home/${NB_USER}
 
 USER root
-COPY . ${HOME}
-WORKDIR ${HOME}
-RUN pip install -r requirements.txt
-
 RUN adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
-    ${NB_USER}
+    ${USER}
 RUN chown -R ${NB_UID} ${HOME}
 
-USER ${NB_USER}
+RUN apt update && apt install git
 
 USER ${USER}
+COPY . ${HOME}
+WORKDIR ${HOME}
+RUN git clone https://github.com/jupyter/notebook
+RUN pip install -e ./notebook/
+RUN pip install -r requirements.txt
