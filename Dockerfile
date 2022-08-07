@@ -10,6 +10,7 @@ ENV HOME /home/${NB_USER}
 
 USER root
 COPY . ${HOME}
+WORKDIR ${HOME}
 RUN pip install -r requirements.txt
 
 RUN adduser --disabled-password \
@@ -19,5 +20,5 @@ RUN adduser --disabled-password \
 RUN chown -R ${NB_UID} ${HOME}
 
 USER ${NB_USER}
-WORKDIR ${HOME}
+
 USER ${USER}
