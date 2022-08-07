@@ -1,6 +1,4 @@
-FROM python:3.9-slim
-
-
+FROM python:3.10-slim
 
 # create user with a home directory
 ARG NB_USER
@@ -15,7 +13,7 @@ RUN adduser --disabled-password \
     ${USER}
 RUN chown -R ${NB_UID} ${HOME}
 
-RUN apt update && apt install git
+RUN apt update && apt install -y --no-install-recommends git
 
 USER ${USER}
 COPY . ${HOME}
