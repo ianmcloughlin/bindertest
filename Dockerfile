@@ -13,7 +13,7 @@ RUN adduser --disabled-password \
     ${USER}
 RUN chown -R ${NB_UID} ${HOME}
 
-RUN apt update && apt install -y --no-install-recommends git
+RUN apt update && apt install -y --no-install-recommends git node
 
 USER ${USER}
 COPY . ${HOME}
