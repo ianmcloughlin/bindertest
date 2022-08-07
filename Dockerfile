@@ -15,7 +15,9 @@ RUN chown -R ${NB_UID} ${HOME}
 
 RUN apt update && apt install -y --no-install-recommends git nodejs
 
+WORKDIR ${HOME}
+COPY . .
+RUN pip install -r requirements.txt
+
 USER ${USER}
 WORKDIR ${HOME}
-COPY . ${HOME}
-RUN pip install -r requirements.txt
