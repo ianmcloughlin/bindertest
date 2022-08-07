@@ -1,0 +1,4 @@
+notebook==7.0.0a5
+jupyterlab==4.0.0a26
+numpy
+matplotlib
