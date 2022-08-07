@@ -13,11 +13,12 @@ RUN adduser --disabled-password \
     ${USER}
 RUN chown -R ${NB_UID} ${HOME}
 
-RUN apt update && apt install -y --no-install-recommends git node
+RUN apt update && apt install -y --no-install-recommends git
 
 USER ${USER}
 COPY . ${HOME}
 WORKDIR ${HOME}
+RUN pip install nodejs-bin
 RUN git clone https://github.com/jupyter/notebook
 RUN pip install -e ./notebook/
 RUN pip install -r requirements.txt
